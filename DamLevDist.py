@@ -66,9 +66,11 @@ def getDamLevDist(C, T):
 
 def main():
     # Построение двумерного графика для слов равных длин
-    #X = np.arange(1, 202, 10)
-    X = np.arange(211, 412, 10)
-    Y = map(lambda x: getRuntime(x[0],x[1],10), [getStrings(i,i,32) for i in X])
+    X = np.arange(1, 202, 10)
+    #X = np.arange(2, 403, 20)
+    # getRuntime() в качестве третьего параметра принимает количество вычислений,
+    # по которому усредняется значение времени работы алгоритма
+    Y = map(lambda x: getRuntime(x[0],x[1],20), [getStrings(i,i,32) for i in X])
     Y = np.array(list(Y))
     
     plt.plot(X, Y, label = 'Время работы алгоритма')
@@ -78,12 +80,12 @@ def main():
         print(X[i], ':', Y[i])
     
     mean = (Y/X/X).mean()
-    #X = np.arange(1, 202)  
-    X = np.arange(211, 412, 10)
+    X = np.arange(1, 202)  
+    #X = np.arange(2, 403, 20)
     plt.plot(X, X*X*mean, label = 'График f(x) = x*x*' + str(mean))
     
     plt.xlabel('Размер слов, поданных на вход алгоритму (N и M)')
-    plt.ylabel('Время работы алгоритма, усреднённое по 10 запускам (сек.)')
+    plt.ylabel('Время работы алгоритма, усреднённое по 20 запускам (сек.)')
     plt.legend()
     plt.show()
 
