@@ -1,0 +1,9 @@
+*/
+Случай, когда все соответствующие записи таблицы price имеют значение NULL отдельно не обрабатывается
+То есть COUNT(pc.price) + COUNT(laptop.price) вернёт 0 и произойдёт деление на 0, а точнее 0/0 (будет возвращено NULL)
+Эту ситуацию, при необходимости, можно учесть с помощью функции IFNULL
+*/
+SELECT ( IFNULL(SUM(pc.price), 0) + IFNULL(SUM(laptop.price), 0) ) / (COUNT(pc.price) + COUNT(laptop.price)) FROM product
+LEFT JOIN pc ON product.model=pc.model
+LEFT JOIN laptop ON product.model=laptop.model 
+WHERE (product.maker="A") AND (product.type="PC" OR product.type="Laptop");

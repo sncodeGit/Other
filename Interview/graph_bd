@@ -1,0 +1,3 @@
+1) MATCH((:Rack{name:"DC1-RCK-1-10"}) - [:HOLDS] - () - [:TYPE] - (mach)) WITH (COUNT(mach) * mach.ram) as ram RETURN SUM(ram);
+2) MATCH((n:Software{name:"Ubuntu"}) - [:VERSION] - (ub_vers)) RETURN MAX(ub_vers.name);
+3) MATCH((:Machine{name:"DC1-RCK-1-1-M-24"}) - [:RUNS] - (run_serv:Service)) RETURN run_serv;
