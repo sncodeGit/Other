@@ -14,6 +14,9 @@ def __get_part_message(message, length):
     if len(part_message) != 0:
         yield part_message
 
+# Кодируем сообщение октетами
+# В начало любого кода добавляем 1
+# Если символ кодируется менее чем 4-мя символами, то добавляем в начало нули
 def __get_code(message, length):
     print('------------------------')
     part_message_gen = __get_part_message(message, length)
