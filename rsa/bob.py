@@ -29,9 +29,11 @@ def __generate_keys(pq_left, pq_right, c_left, c_right):
 
     # Выбираем два простых числа
     simple_nums_gen = __get_simple_num(pq_left, pq_right)
-    p = 1000000007# next(simple_nums_gen) # 1000000007
+    p = 1000000007
+    # p = next(simple_nums_gen)
     print("p:", p)
-    q = 1000000009# next(simple_nums_gen) # 1000000009
+    q = 1000000009
+    # q = next(simple_nums_gen)
     print("q:", q)
 
     # Вычисляем модуль
